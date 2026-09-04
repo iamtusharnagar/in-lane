@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+
+      - name: Test hook script
+        run: node --test tests/*.test.js
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Validate plugin manifest and hooks
+        run: claude plugin validate . --strict
+
+      - name: Validate as a standalone plugin (not just the marketplace shell)
+        run: |
+          mkdir -p /tmp/plugin-only
+          cp -r . /tmp/plugin-only/
+          rm /tmp/plugin-only/.claude-plugin/marketplace.json
+          cd /tmp/plugin-only
+          claude plugin validate . --strict

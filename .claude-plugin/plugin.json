@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "in-lane",
+  "displayName": "In Lane",
+  "version": "0.1.0",
+  "description": "Keeps every code change scoped to exactly what was asked. Force-injected every session via a SessionStart hook, with safety-critical exceptions that are never traded away for a smaller diff.",
+  "author": {
+    "name": "Tushar Nagar"
+  },
+  "homepage": "https://github.com/tusharnagar2002/in-lane",
+  "repository": "https://github.com/tusharnagar2002/in-lane",
+  "license": "MIT",
+  "keywords": ["scope", "code-review", "discipline", "diff-size", "hooks"]
+}

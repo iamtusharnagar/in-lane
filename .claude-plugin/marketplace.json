@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "in-lane",
+  "description": "A single-plugin marketplace for in-lane: scope discipline for coding agents.",
+  "owner": {
+    "name": "Tushar Nagar"
+  },
+  "plugins": [
+    {
+      "name": "in-lane",
+      "description": "Keeps every code change scoped to exactly what was asked, with safety-critical exceptions that are never traded away for a smaller diff.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

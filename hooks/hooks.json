@@ -1,0 +1,17 @@
+{
+  "description": "Force-injects the in-lane scope-discipline ruleset at the start of every session. A SessionStart hook is used instead of relying on the model to invoke the skill on its own: a passive SKILL.md with no hook has been shown to never self-activate in practice (see README.md#why-a-hook).",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/inject-context.js"],
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
